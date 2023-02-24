@@ -1,0 +1,40 @@
+name: Test react app
+
+on: workflow_dispatch
+
+jobs:
+  standard:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+    - name: dependencies
+      run: npm ci
+    - name: Test
+      run: npx start-server-and-test start http://localhost:3000 cy:run
+      env:
+        WAIT_ON_TIMEOUT: 120000
+
+
+  debug:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+    - name: dependencies
+      run: npm ci
+    - name: Test
+      run: npx start-server-and-test start http://localhost:3000 cy:run
+      env:
+        DEBUG: 'start-server-and-test'
+        WAIT_ON_TIMEOUT: 120000
+
+  workaround:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+    - name: dependencies
+      run: npm ci
+    - name: Test
+      run: npx start-server-and-test start http://127.0.0.1:3000 cy:run
