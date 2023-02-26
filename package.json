@@ -18,7 +18,9 @@
     "eject": "react-scripts eject",
     "cy:run": "cypress run",
     "test:cypress": "start-server-and-test start http://localhost:3000 cy:run",
-    "test:cypress:workaround": "start-server-and-test start http://127.0.0.1:3000 cy:run"
+    "test:cypress:workaround": "start-server-and-test start http://127.0.0.1:3000 cy:run",
+    "wait-on:server": "wait-on http://localhost:3000 -t 15000 -v",
+    "wait-on:server:workaround": "wait-on http://127.0.0.1:3000 -t 15000 -v"
 
   },
   "eslintConfig": {

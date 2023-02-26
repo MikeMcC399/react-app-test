@@ -20,5 +20,29 @@ jobs:
       run: npm ci
     - name: start server
       run: npm start &
+    - name: netstat
+      run: netstat -lnt | grep 3000
     - name: check server is running
-      run: wait-on http://localhost:3000 -t 15000 -v
+      run: npx wait-on http://localhost:3000 -t 15000 -v
+
+  workaround:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [16, 18]
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+    - name: install Node.js ${{ matrix.node }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node }}
+    - name: dependencies
+      run: npm ci
+    - name: start server
+      run: npm start &
+    - name: netstat
+      run: netstat -lnt | grep 3000
+    - name: check server is running
+      run: npx wait-on http://127.0.0.1:3000 -t 15000 -v
