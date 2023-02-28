@@ -10,3 +10,6 @@ curl -I http://127.0.0.1:3000
 
 echo -e "\ncheck [::1]"
 curl -I http://[::1]:3000
+
+# ignore any errors and return success
+exit 0

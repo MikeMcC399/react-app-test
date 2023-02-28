@@ -22,8 +22,8 @@ jobs:
       run: npm start &
     - name: netstat
       run: netstat -lnt | grep 3000
-    # - name: curl
-    #   run: npm run curl
+    - name: curl
+      run: npm run curl
     - name: check server is running
       run: npx wait-on http://localhost:3000 -t 15000 -v
 
@@ -46,7 +46,7 @@ jobs:
       run: npm start &
     - name: netstat
       run: netstat -lnt | grep 3000
-    # - name: curl
-    #   run: npm run curl
+    - name: curl
+      run: npm run curl
     - name: check server is running
       run: npx wait-on http://127.0.0.1:3000 -t 15000 -v
