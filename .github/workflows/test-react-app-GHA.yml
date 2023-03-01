@@ -1,0 +1,65 @@
+name: Test react app with github-action
+
+on: workflow_dispatch
+
+jobs:
+  standard:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+    - name: Test
+      uses: cypress-io/github-action@v5
+      with:
+        start: npm start
+
+  wait-on-node:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [16, 18]
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+    - name: install Node.js ${{ matrix.node }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node }}
+    - name: Test
+      uses: cypress-io/github-action@v5
+      with:
+        wait-on: http://localhost:3000
+        start: npm start
+
+  wait-on-os:
+    strategy:
+      fail-fast: false
+      matrix:
+        OS: [ubuntu-22.04, windows-2022, macos-12]
+    name: wait-on ${{ matrix.OS }}
+    runs-on: ${{ matrix.OS }}
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+    - name: Test
+      uses: cypress-io/github-action@v5
+      with:
+        wait-on: http://localhost:3000
+        start: npm start
+
+  workaround:
+    strategy:
+      fail-fast: false
+      matrix:
+        OS: [ubuntu-22.04, windows-2022, macos-12]
+    name: wait-on IPv4 ${{ matrix.OS }}
+    runs-on: ${{ matrix.OS }}
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+    - name: Test
+      uses: cypress-io/github-action@v5
+      with:
+        wait-on: http://127.0.0.1:3000
+        start: npm start
