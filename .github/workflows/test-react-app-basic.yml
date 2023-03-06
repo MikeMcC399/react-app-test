@@ -1,4 +1,4 @@
-name: test-basic
+name: Test react app - basic
 on:
   workflow_dispatch:
 
