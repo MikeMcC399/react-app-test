@@ -11,7 +11,7 @@ jobs:
         node: [16, 18, 20]
     steps:
     - name: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: install Node.js ${{ matrix.node }}
       uses: actions/setup-node@v3
       with:
@@ -35,7 +35,7 @@ jobs:
         node: [16, 18, 20]
     steps:
     - name: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: install Node.js ${{ matrix.node }}
       uses: actions/setup-node@v3
       with:
@@ -61,7 +61,7 @@ jobs:
         node: [16, 18, 20]
     steps:
     - name: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: install Node.js ${{ matrix.node }}
       uses: actions/setup-node@v3
       with:

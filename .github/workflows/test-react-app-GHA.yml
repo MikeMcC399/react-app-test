@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - name: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Test
-      uses: cypress-io/github-action@v5
+      uses: cypress-io/github-action@v6
       with:
         start: npm start
 
@@ -21,13 +21,13 @@ jobs:
         node: [16, 18, 20]
     steps:
     - name: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: install Node.js ${{ matrix.node }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node }}
     - name: Test
-      uses: cypress-io/github-action@v5
+      uses: cypress-io/github-action@v6
       with:
         wait-on: http://localhost:3000
         start: npm start
@@ -41,9 +41,9 @@ jobs:
     runs-on: ${{ matrix.OS }}
     steps:
     - name: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Test
-      uses: cypress-io/github-action@v5
+      uses: cypress-io/github-action@v6
       with:
         wait-on: http://localhost:3000
         start: npm start
@@ -57,9 +57,9 @@ jobs:
     runs-on: ${{ matrix.OS }}
     steps:
     - name: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Test
-      uses: cypress-io/github-action@v5
+      uses: cypress-io/github-action@v6
       with:
         wait-on: http://127.0.0.1:3000
         start: npm start
