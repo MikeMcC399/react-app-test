@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        node: [16, 18, 20, 21]
+        node: [16, 18, 20, 22]
     name: test on Node.js ${{ matrix.node }}
     steps:
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
       - name: Checkout
